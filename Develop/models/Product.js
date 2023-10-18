@@ -23,11 +23,10 @@ Product.init(
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
-      //input statement that validates that the value is a decimal
       validate: {
-        isDecimal: function (value) {
-          return !isNaN(parseFloat(value)) && isFinite(value);
-        }
+        isDecimal: true,
+      },
+      //input statement that validates that the value is a decimal
       },
       stock: {
         type: DataTypes.INTEGER,
@@ -35,16 +34,15 @@ Product.init(
         defaultValue: 10,
         validate: {
           isNumeric: true
-        }
-      }
-    },
+        },
+      },
     category_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'category',
         key: 'id',
-      }
-    }
+      },
+    },
   },
   {
     sequelize,
